@@ -108,8 +108,12 @@ define([
       function displaySuccess(data, status, jqXHR) {
           var jsonResponse;
           try {
-              jsonResponse = JSON.parse(jqXHR.responseText);
-              jsonResponse = JSON.stringify(jsonResponse, null, 4);
+              if (jqXHR.responseText) {
+                  jsonResponse = JSON.parse(jqXHR.responseText);
+                  jsonResponse = JSON.stringify(jsonResponse, null, 4);
+              } else {
+                  jsonResponse = '<No content>';
+              }
           } catch (e) {
               jsonResponse = data;
           }
