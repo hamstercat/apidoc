@@ -31,7 +31,9 @@ define([
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
       // Optional header
-      var header = {};
+      var header = {
+          'Content-Type': 'application/json'
+      };
       $root.find(".sample-request-header:checked").each(function(i, element) {
           var group = $(element).data("sample-request-header-group-id");
           $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
@@ -94,7 +96,7 @@ define([
       var ajaxRequest = {
           url        : url,
           headers    : header,
-          data       : param,
+          data       : JSON.stringify(param),
           type       : type.toUpperCase(),
           success    : displaySuccess,
           error      : displayError
