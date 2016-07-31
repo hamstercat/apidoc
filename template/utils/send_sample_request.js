@@ -112,7 +112,7 @@ define([
                   jsonResponse = JSON.parse(jqXHR.responseText);
                   jsonResponse = JSON.stringify(jsonResponse, null, 4);
               } else {
-                  jsonResponse = '<No content>';
+                  jsonResponse = jqXHR.status + ' (no content returned)';
               }
           } catch (e) {
               jsonResponse = data;
